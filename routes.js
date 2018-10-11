@@ -8,12 +8,13 @@ let IgdbWrapper = new IgdbApiWrapper();
 
 
 router.get('/', async (ctx) => {
-    let gameData = await IgdbWrapper.getGamesData();
-    ctx.body = pug.renderFile('templates/secondTemplate.pug', {data : gameData[0].name});
+    let gamesData = await IgdbWrapper.getGamesData();
+    ctx.body = pug.renderFile('templates/allGamesPage.pug', {data : gamesData});
 })
 
-    .get('/first', async (ctx) => {
-    ctx.body = pug.renderFile('templates/firstTemplate.pug');
+    .get('/games/:id', async (ctx) => {
+        let gameData = await IgdbWrapper.getGameData(ctx.params.id);
+        ctx.body = pug.renderFile('templates/oneGamePage.pug', {data : gameData});
     });
 
 module.exports = router;
