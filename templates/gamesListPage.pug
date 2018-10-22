@@ -1,7 +1,8 @@
 html
     head
         link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous")
-        link(rel="stylesheet" href="/mystyle.css")
+        link(rel="stylesheet" href="/gamesListPage.css")
+        link(rel="stylesheet" href="/gameInfoPage.css")
         title Home Page - Microblog
     body
     nav(class="navbar navbar-expand-lg navbar-light bg-light")
@@ -12,4 +13,17 @@ html
                 li(class="nav-item active")
                 a(class="nav-link" href="/") Home 
                     span(class="sr-only")
-    h3 #{data[0].name}
+    block content
+        h3 Top 10 games                
+        each game in data
+            div(class="game-block")
+                div
+                    if game.cover
+                        img(class="game-block-img" src=`${"http:" + game.cover.url}`)   
+                div(class="game-block-text")    
+                    p
+                        a(href=`${"/games/" + game.id}`)  #{ game.name }             
+                    p    
+                        h7 Game rating: #{ Math.round(game.popularity) }
+
+

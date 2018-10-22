@@ -1,0 +1,9 @@
+extends gamesListPage.pug
+block content
+    div(class="game-img")
+        if data.cover
+            img(class="game-img" src=`${"https://images.igdb.com/igdb/image/upload/t_cover_big/" 
+                + data.cover.cloudinary_id + ".png"}`)
+    div(class="game-title-wrapper")
+        p(class="game-head-title") #{data.name}
+        p(class="game-head-info") #{data.developers}

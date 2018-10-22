@@ -14,10 +14,10 @@ function IgdbWrapper(){
 };
 
 IgdbWrapper.prototype.getGamesData = async function(){
-    let gamesEndpointOptions = this.makeEndpointOptions({
+    const gamesEndpointOptions = this.makeEndpointOptions({
         path: 'games/',
         queryParams: {
-            fields: ['name','popularity','cover.url', 'id'],
+            fields: ['name', 'popularity', 'cover.url', 'id'],
             order: 'popularity:desc'    
         }
       }
@@ -27,11 +27,11 @@ IgdbWrapper.prototype.getGamesData = async function(){
     return gamesData;    
 };
 IgdbWrapper.prototype.getGameData = async function(gameId){
-    let gameEndpointOptions = this.makeEndpointOptions({
+    const gameEndpointOptions = this.makeEndpointOptions({
         path: `${"games/" + gameId}`,
         queryParams: {
             fields: ['name', 'summary', 'first_release_date', 'platforms',
-                'developers', 'websites', 'storyline', 'popularity', 'cover.url']
+                'developers', 'websites', 'popularity', 'cover.cloudinary_id']
         }
     });
     let response = await request.get(gameEndpointOptions);
