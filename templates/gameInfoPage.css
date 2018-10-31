@@ -16,3 +16,19 @@
     font-weight: bold;
     font-size: 30px;
 }
+.game-main-info{
+    float: middle;
+}
+.game-semibold{
+    font-weight: 700;
+}
+.game-main-wrapper{
+    margin-left: 280px;
+}
+.game-main-info-summary{
+    margin-top: 10px;
+}
+.game-websites{
+    float: middle;
+    margin-top: 20;
+}

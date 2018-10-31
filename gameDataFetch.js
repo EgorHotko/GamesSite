@@ -10,42 +10,25 @@ function dataFetch(){
 dataFetch.prototype.fillAllData = async function(data){
     this.data = Object.assign({}, data);
     await this.fillPlatformsData();
-    await this.fillWebsitesCategoryData();
+    this.fillWebsitesCategoryData();
+    if(this.data.developers)
+        await this.fillDevelopersData();
+    this.fillReleaseDate();
     return this.data;
 };
 
 dataFetch.prototype.fillPlatformsData = async function(){
-    const platformEndpointOptions = IgdbWrapper.makeEndpointOptions({
-        path: `${"platforms/" + this.data.platforms.join(",")}`,
-        queryParams: {
-            fields: ['name'],   
-            }
-        }
-    );
-    let response = await request.get(platformEndpointOptions);
-    let platformData = JSON.parse(response);
-    this.data.platforms = platformData; 
+    this.data.platforms = await IgdbWrapper.getPlatforms(this.data.platforms); 
 };
 
 dataFetch.prototype.fillWebsitesCategoryData = function(){
-    const categories = {
-        "1": "official",
-        "2": "wikia",
-        "3":	"wikipedia",
-        "4":	"facebook",
-        "5":	"twitter",
-        "6":	"twitch",
-        "8":	"instagram",
-        "9":	"youtube",
-        "10":	"iphone",
-        "11":	"ipad",
-        "12":	"android",
-        "13":	"steam",
-        "14":	"Reddit"
-    };
-    this.data.websites = this.data.websites.map((website)=>{
-        return {...website, category: categories[website.category]};
-    });
+    this.data.websites = IgdbWrapper.getWebsites(this.data.websites);
 };
+dataFetch.prototype.fillDevelopersData = async function(){
+    this.data.developers = await IgdbWrapper.getDevelopers(this.data.developers);
+};
+dataFetch.prototype.fillReleaseDate = function(){
+    this.data.first_release_date = new Date(this.data.first_release_date).toDateString();
+}
 
 module.exports = dataFetch;
