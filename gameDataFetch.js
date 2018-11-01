@@ -3,9 +3,8 @@ const IgdbApiWrapper = require('./IgdbApiWrapper');
 const IgdbWrapper = new IgdbApiWrapper();
 
 function dataFetch(){
-
+    this.data = {}
 };
-
 dataFetch.prototype.fillAllData = async function(data){
     this.data = Object.assign({}, data);
     await this.fillPlatformsData();
