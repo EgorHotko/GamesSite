@@ -21,7 +21,9 @@ block content
             div(class="game-main-info-summary")
                 p #{data.summary}
         p(class="game-semibold") Websites:
-        div(class="game-websites")
-            each website in data.websites
-                span
-                    a(href=website.url) #{website.category}  
+        if data.websites
+            div(class="game-websites")
+                each website in data.websites
+                    span
+                        a(href=website.url) #{website.category}
+                          

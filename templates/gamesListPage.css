@@ -1,4 +1,4 @@
-body{
+body {
     padding: 10px;
     background-color: #f1f1f1;
 }
@@ -12,13 +12,13 @@ body{
     border-right: 0px;
 }
 
-.game-block-img{
+.game-block-img {
     float: left;
     width: 70px;
     height: 70px;
 }
 
-.game-block-text{
+.game-block-text {
     float: center;
     padding-left: 80px; 
 }

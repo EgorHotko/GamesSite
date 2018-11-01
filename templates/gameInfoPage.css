@@ -1,34 +1,34 @@
-.game-img{
+.game-img {
     float: left;
     width: 264px;
     margin-right: 15px;
     margin-top: 20px;
 }
-.game-title-wrapper{
+.game-title-wrapper {
     float: middle;
     margin-top: 60;
 }
-.game-head-title{
+.game-head-title {
     font-weight: blod;
     font-size: 40px;
 }
-.game-head-info{
+.game-head-info {
     font-weight: bold;
     font-size: 30px;
 }
-.game-main-info{
+.game-main-info {
     float: middle;
 }
-.game-semibold{
+.game-semibold {
     font-weight: 700;
 }
-.game-main-wrapper{
+.game-main-wrapper {
     margin-left: 280px;
 }
-.game-main-info-summary{
+.game-main-info-summary {
     margin-top: 10px;
 }
-.game-websites{
+.game-websites {
     float: middle;
     margin-top: 20;
 }

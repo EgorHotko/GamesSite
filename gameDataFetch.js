@@ -1,7 +1,6 @@
-const request = require('request-promise');
 const IgdbApiWrapper = require('./IgdbApiWrapper');
 
-let IgdbWrapper = new IgdbApiWrapper();
+const IgdbWrapper = new IgdbApiWrapper();
 
 function dataFetch(){
 
@@ -10,7 +9,8 @@ function dataFetch(){
 dataFetch.prototype.fillAllData = async function(data){
     this.data = Object.assign({}, data);
     await this.fillPlatformsData();
-    this.fillWebsitesCategoryData();
+    if(this.data.websites)
+        this.fillWebsitesCategoryData();
     if(this.data.developers)
         await this.fillDevelopersData();
     this.fillReleaseDate();

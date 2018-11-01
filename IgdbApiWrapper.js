@@ -1,6 +1,7 @@
 const request = require('request-promise');
 const config = require('./config');
 const buildUrl = require('build-url');
+const Categories = require('./enumeratedFields')
 
 
 function IgdbWrapper(){
@@ -55,23 +56,8 @@ IgdbWrapper.prototype.getPlatforms = async function(platforms){
     return JSON.parse(response);
 };
 IgdbWrapper.prototype.getWebsites = function(websites){
-    const categories = {
-        "1": "official",
-        "2": "wikia",
-        "3":	"wikipedia",
-        "4":	"facebook",
-        "5":	"twitter",
-        "6":	"twitch",
-        "8":	"instagram",
-        "9":	"youtube",
-        "10":	"iphone",
-        "11":	"ipad",
-        "12":	"android",
-        "13":	"steam",
-        "14":	"Reddit"
-    };
-    let websitesData = websites.map((website)=>{
-        return {...website, category: categories[website.category]};
+    let websitesData = websites.map(website => {
+        return {...website, category: Categories[website.category]};
     });
     return websitesData;
 };
