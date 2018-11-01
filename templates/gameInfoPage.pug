@@ -1,0 +1,29 @@
+extends gamesListPage.pug
+block append head
+    link(rel="stylesheet" href="/gameInfoPage.css")
+block content
+    div(class="game-img")
+        if data.cover
+            img(class="game-img" src=`${"https://images.igdb.com/igdb/image/upload/t_cover_big/" 
+                + data.cover.cloudinary_id + ".png"}`)
+    div(class="game-title-wrapper")
+        p(class="game-head-title") #{data.name}
+        if data.developers
+            each developer in data.developers
+                p(class="game-head-info") #{developer.name}
+        p(class="game-head-info") #{data.first_release_date}
+    div(class="game-main-wrapper")
+        div(class="game-main-info")
+            span(class="game-semibold") Platforms: 
+                each platform in data.platforms  
+                    a #{platform.name}  
+            div(class="game-semibold") About game:
+            div(class="game-main-info-summary")
+                p #{data.summary}
+        p(class="game-semibold") Websites:
+        if data.websites
+            div(class="game-websites")
+                each website in data.websites
+                    span
+                        a(href=website.url) #{website.category} &nbsp;
+                          
