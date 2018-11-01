@@ -40,9 +40,9 @@ IgdbWrapper.prototype.getGameData = async function(gameId){
     return gameData;
 };
 IgdbWrapper.prototype.makeEndpointOptions = function(endpointParams){
-    let endpointOptions = Object.assign({}, this.options);
-    endpointOptions.url = buildUrl(this.options.url, endpointParams);
-    return endpointOptions;
+    return Object.assign({}, {headers: this.options.headers,
+        url: buildUrl(this.options.url, endpointParams)
+    });
 };
 IgdbWrapper.prototype.getPlatforms = async function(platforms){
     const platformEndpointOptions = this.makeEndpointOptions({
